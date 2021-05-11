@@ -27,7 +27,7 @@ module.exports = {
         name: `Algo-DS Documentation`,
         short_name: `AlgoDS`,
         start_url: `/`,
-        background_color: `#ffffff`,
+        background_color: `#f8fafb`,
         display: `standalone`,
         icon: `static/favicon.png`,
       },

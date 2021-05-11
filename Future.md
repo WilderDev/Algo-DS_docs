@@ -3,6 +3,7 @@
 - logo
 - favicon
 - color scheme
+- fonts
 
 ---
 
@@ -21,4 +22,3 @@
 
 - robots.txt
 - i18n
-- site banner
