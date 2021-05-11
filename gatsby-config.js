@@ -1,11 +1,11 @@
 module.exports = {
   siteMetadata: {
-    siteTitle: `Rocket Docs`,
-    defaultTitle: `Rocket Docs`,
-    siteTitleShort: `Rocket Docs`,
-    siteDescription: `Out of the box Gatsby Theme for creating documentation websites easily and quickly`,
-    siteUrl: `https://rocketdocs.netlify.app`,
-    siteAuthor: `@rocketseat`,
+    siteTitle: `Algo-DS Documentation`,
+    defaultTitle: `Algo & DS docs`,
+    siteTitleShort: `AlgoDS`,
+    siteDescription: `Get your algo-rhythm on with non-stop classic computer science hits... all documented for your viewing pleasure.`,
+    siteUrl: `https://algods.gatsbyjs.io`,
+    siteAuthor: `William Wilder`,
     siteImage: `/banner.png`,
     siteLanguage: `en`,
     themeColor: `#8257E6`,
@@ -25,8 +25,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Rocketseat Gatsby Themes`,
-        short_name: `RS Gatsby Themes`,
+        name: `Algo-DS Documentation`,
+        short_name: `AlgoDS`,
         start_url: `/`,
         background_color: `#ffffff`,
         display: `standalone`,
@@ -34,17 +34,11 @@ module.exports = {
       },
     },
     `gatsby-plugin-sitemap`,
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     trackingId: `YOUR_ANALYTICS_ID`,
-    //   },
-    // },
     `gatsby-plugin-remove-trailing-slashes`,
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: `https://rocketdocs.netlify.app`,
+        siteUrl: `https://algods.gatsbyjs.io`,
       },
     },
     `gatsby-plugin-offline`,
