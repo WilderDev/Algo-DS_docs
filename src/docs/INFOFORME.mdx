@@ -1,8 +1,3 @@
----
-title: Shadowing
-description: Rocket Docs allows to customize the look by using Gatsby theme shadowing feature.
----
-
 To shadow/override this theme, you will need to place your files into `src/@rocketseat/gatsby-theme-docs` folder.
 
 If you don't know what shadowing is, or have questions about it, [check this tutorial](https://www.gatsbyjs.com/docs/themes/shadowing/) from the Gatsby documentation.
@@ -12,7 +7,7 @@ If you don't know what shadowing is, or have questions about it, [check this tut
 If you want to change the logo just create the following file:
 
 ```js title=src/@rocketseat/gatsby-theme-docs/components/Logo.js
-import React from 'react';
+import React from "react";
 
 export default function Logo(props) {
   return (
@@ -33,10 +28,10 @@ export default function Logo(props) {
 If your logo is a png, you could use it like this:
 
 ```js title=src/@rocketseat/gatsby-theme-docs/components/Logo.js
-import React from 'react';
+import React from "react";
 
 // Path to the logo file on your project
-import rocketseatLogo from 'assets/logo.png';
+import rocketseatLogo from "assets/logo.png";
 
 const Logo = () => (
   <img src={rocketseatLogo} alt="Rocketseat logo" style={{ width: 180 }} />
@@ -54,13 +49,13 @@ Create a file at `src/@rocketseat/gatsby-theme-docs/text/index.mdx` to edit the 
 
 My awesome project!
 
-import Navigation from '@rocketseat/gatsby-theme-docs/src/components/Docs/PostNav';
+import Navigation from "@rocketseat/gatsby-theme-docs/src/components/Docs/PostNav";
 
 <Navigation
   prev={null}
   next={{
-    label: 'Installation',
-    link: '/installation',
+    label: "Installation",
+    link: "/installation",
   }}
 />
 ```
@@ -74,8 +69,8 @@ Remember that you need to restart your server to see the update.
 ```js title=src/@rocketseat/gatsby-theme-docs/styles/theme.js
 export default {
   colors: {
-    primary: '#8257E6',
-    background: '#FFFFFF',
+    primary: "#8257E6",
+    background: "#FFFFFF",
     shape: `#F2F2FA`,
     title: `#3D3D4D`,
     text: `#6C6C80`,
@@ -95,8 +90,8 @@ By default we add some elements to React Live Scope. If you need to add more, ju
 shadow the following file:
 
 ```js title=src/@rocketseat/gatsby-theme-docs/components/Code/LiveCodeScope.js
-import { mdx } from '@mdx-js/react';
-import { css, jsx } from '@emotion/react';
+import { mdx } from "@mdx-js/react";
+import { css, jsx } from "@emotion/react";
 
 export default {
   css,
@@ -106,3 +101,75 @@ export default {
 ```
 
 If you want to know more about Scope, [check this explanation](https://github.com/FormidableLabs/react-live#how-does-the-scope-work).
+
+## Embeding files
+
+In a documentation website, sometimes you will need to embed well known services (like CodeSandbox, Twitter, or others...). If you need to
+do it, you can simply copy-paste the link (powered by the awesome [gatsby-remark-embeder](https://www.gatsbyjs.com/packages/gatsby-remark-embedder/)).
+Make sure to check the [supported services](https://github.com/MichaelDeBoey/gatsby-remark-embedder#supported-services).
+
+https://youtu.be/QfcozcbDhNM
+
+## Code Highlight
+
+We support many options for code components.
+
+### Title
+
+To show a title, just add it to your code block. Ex: `title=src/myfile.css`
+
+```css title=src/myfile.css
+.gatsby::before {
+  content: "niceee...";
+}
+```
+
+### Line numbers
+
+To add line numbers for that code block, pass an option `lineNumbers=true`.
+
+```js lineNumbers=true
+const rocket = {
+  launch: () => console.log("Launching..."),
+};
+
+rocket.launch();
+```
+
+### React live
+
+As mentioned in the introduction, this theme uses `react-live`, so you can
+create a playground for live editing React components.
+
+To use it, just add a `live=true` option to your code block.
+
+```jsx lineNumbers=true title=gatsby-config.js live=true
+function MyComponent() {
+  function handleButtonClick() {
+    alert("wowww");
+  }
+
+  return <button onClick={handleButtonClick}>Hey, click me!</button>;
+}
+
+render(<MyComponent />);
+```
+
+> If you need to add elements to the scope, check this [guide](/usage/shadowing#adding-elements-to-react-live-scope).
+
+### Highlight lines
+
+To highlight lines, you can pass ranges to a `highlight` option.
+For example `highlight={1-4,6-7,9}` on the code below would result in:
+
+```jsx highlight={1-4,6-7,9}
+function MyComponent() {
+  function handleButtonClick() {
+    alert("wowww");
+  }
+
+  return <button onClick={handleButtonClick}>Hey, click me!</button>;
+}
+
+render(<MyComponent />);
+```

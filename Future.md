@@ -1,5 +1,9 @@
 ## HIGH Priority
 
+- logo
+- favicon
+- color scheme
+
 ---
 
 ---
@@ -17,3 +21,4 @@
 
 - robots.txt
 - i18n
+- site banner

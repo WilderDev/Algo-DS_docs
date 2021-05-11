@@ -6,9 +6,9 @@ module.exports = {
     siteDescription: `Get your algo-rhythm on with non-stop classic computer science hits... all documented for your viewing pleasure.`,
     siteUrl: `https://algods.gatsbyjs.io`,
     siteAuthor: `William Wilder`,
-    siteImage: `/banner.png`,
+    siteImage: `/banner.jpg`,
     siteLanguage: `en`,
-    themeColor: `#8257E6`,
+    // themeColor: `#8257E6`, // TODO
     basePath: `/`,
   },
   flags: { PRESERVE_WEBPACK_CACHE: true },
