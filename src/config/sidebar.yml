@@ -1,20 +1,30 @@
 # Sidebar navigation
 
-- label: 'Introduction'
-  link: '/'
-- label: 'Getting started'
-  link: '/getting-started'
-- label: Usage
+- label: "Get Started"
+  link: "/"
+- label: "Resources"
+  link: "/resources"
+- label: Algorithms
   items:
-    - label: 'Creating docs'
-      link: '/usage/creating-docs'
-    - label: 'Navigation'
-      link: '/usage/navigation'
-    - label: 'Shadowing'
-      link: '/usage/shadowing'
+    - label: "Arrays"
+      link: "/algorithms/arrays"
+    - label: "Strings"
+      link: "/algorithms/strings"
+    - label: "Sorts"
+      link: "/algorithms/sorts"
+    - label: "Searches"
+      link: "/algorithms/searches"
+    - label: "Math"
+      link: "/algorithms/math"
+    - label: "Other"
+      link: "/algorithms/other"
+- label: Data Structures
+  items:
+    - label: "Graphs"
+      link: "/data-structures/graphs"
 - label: More
   items:
     - label: FAQ
       link: /faq
-    - label: 'Github'
-      link: https://github.com/rocketseat/gatsby-themes
+    - label: "Github"
+      link: https://github.com/WilderDev/Algo-DS_docs
