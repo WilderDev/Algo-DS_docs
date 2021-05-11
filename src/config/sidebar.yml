@@ -20,8 +20,18 @@
       link: "/algorithms/other"
 - label: Data Structures
   items:
-    - label: "Graphs"
-      link: "/data-structures/graphs"
+    - label: "Stacks"
+      link: "/data-structures/stacks"
+    - label: "Queues"
+      link: "/data-structures/queues"
+    - label: "Hash Tables"
+      link: "/data-structures/hash-tables"
+    - label: "Heaps"
+      link: "/data-structures/heaps"
+    - label: "Trees"
+      link: "/data-structures/trees"
+    - label: "Tries"
+      link: "/data-structures/tries"
 - label: More
   items:
     - label: FAQ
