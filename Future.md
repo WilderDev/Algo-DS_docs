@@ -22,3 +22,8 @@
 
 - robots.txt
 - i18n
+
+### Resources
+
+<!-- https://github.com/trekhleb/javascript-algorithms/tree/master/src/algorithms -->
+<!-- https://github.com/trekhleb/javascript-algorithms/tree/master/src/data-structures -->
