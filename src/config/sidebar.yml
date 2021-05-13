@@ -16,10 +16,10 @@
       link: "/algorithms/searches"
     - label: "Math"
       link: "/algorithms/math"
-    - label: "Other"
-      link: "/algorithms/other"
 - label: Data Structures
   items:
+    - label: "Linked-Lists"
+      link: "/data-structure/linked-lists"
     - label: "Stacks"
       link: "/data-structures/stacks"
     - label: "Queues"
