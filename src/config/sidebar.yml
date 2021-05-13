@@ -19,7 +19,7 @@
 - label: Data Structures
   items:
     - label: "Linked-Lists"
-      link: "/data-structure/linked-lists"
+      link: "/data-structures/linked-lists"
     - label: "Stacks"
       link: "/data-structures/stacks"
     - label: "Queues"
