@@ -13,11 +13,24 @@ Except, since every machine has different processing speeds and connection stren
 in common integers. Instead, Big O is a way to give the algorithm in question a position on the hierarchy when the inputs are increased to very large numbers.
 
 This approach takes the larger view and often the worst case because computers are very quick so there are only
-minute differenences between all algorithms with an input of 3 bits. But send in an array of ten-million strings and you are going to want an efficient way to perform your function.
+minute differences between all algorithms with an input of 3 bits. But send in an array of _ten million_ strings and you are going to want an efficient way to perform your function.
+
+---
 
 ## The Basics
 
 There are 8 (primary) grades for an algorithm. We will go from the fastest to the absolute slowest. It should go without saying,
 but always aim to implement a more efficient solution when possible. The classifications are as follows:
 
-1. **O(1)** - _constant_:
+1. **O(1)** - _constant_
+2. **O(log n)** - _logarithmic_
+3. **O(n)** - _linear_
+4. **O(n log n)** - _loglinear_
+5. **O(n^2)** - _quadratic_
+6. **O(n^c)** - _polynomial_
+7. **O(c^n)** - _exponential_
+8. **O(n!)** - _factorial_
+
+![Big O Notation Chart of all complexities and how they compare](/big-o-graph.png)
+
+---
