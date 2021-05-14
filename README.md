@@ -4,7 +4,7 @@ Get your algo-rhythm on with non-stop classic computer science hits... all docum
 
 ---
 
-![Algo-DS Home page](/Algo-DS.png)
+![Algo-DS Home page](./src/assets/Algo-DS.png)
 
 [Link to Site!](https://algods.gatsbyjs.io/)
 
@@ -12,9 +12,9 @@ Get your algo-rhythm on with non-stop classic computer science hits... all docum
 
 ## Who Is This For?
 
-This website is for anyone looking to learn, or re-learn algorithm and data structures.
+This website is for anyone looking to learn, or re-learn **algorithms & data structures**.
 
-There are a ton of websites and applications for this, but none had the explanations and implementations grouped together.
+There are a _ton_ of websites and applications for this, but none had the explanations and implementations grouped together.
 
 ---
 
@@ -37,7 +37,7 @@ in common integers. Instead, Big O is a way to give the algorithm in question a 
 This approach takes the larger view and often the worst case because computers are very quick so there are only
 minute differences between all algorithms with an input of 3 bits. But send in an array of _ten million_ strings and you are going to want an efficient way to perform your function.
 
-![Big O Notation Chart of all complexities and how they compare](/big-o-graph.png)
+![Big O Notation Chart of all complexities and how they compare](./src/assets/big-o-graph.png)
 
 ---
 
