@@ -2,8 +2,6 @@
 
 - label: "Get Started"
   link: "/"
-- label: "Resources"
-  link: "/resources"
 - label: Algorithms
   items:
     - label: "Arrays"
@@ -30,13 +28,9 @@
       link: "/data-structures/heaps"
     - label: "Trees"
       link: "/data-structures/trees"
-    - label: "Tries"
-      link: "/data-structures/tries"
 - label: More
   items:
     - label: Algorithm Analysis
       link: /bigO
-    - label: FAQ
-      link: /faq
-    - label: "Github"
-      link: https://github.com/WilderDev/Algo-DS_docs
+    - label: Resources
+      link: /resources
