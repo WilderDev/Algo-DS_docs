@@ -20,10 +20,10 @@
   items:
     - label: "Linked-Lists"
       link: "/data-structures/linked-lists"
-    - label: "Stacks"
-      link: "/data-structures/stacks"
-    - label: "Queues"
-      link: "/data-structures/queues"
+    - label: "Stacks & Queues"
+      link: "/data-structures/stacks-and-queues"
+    - label: "Graphs"
+      link: "/data-structures/graphs"
     - label: "Hash Tables"
       link: "/data-structures/hash-tables"
     - label: "Heaps"
@@ -34,6 +34,8 @@
       link: "/data-structures/tries"
 - label: More
   items:
+    - label: Algorithm Analysis
+      link: /bigO
     - label: FAQ
       link: /faq
     - label: "Github"

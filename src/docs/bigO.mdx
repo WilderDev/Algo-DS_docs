@@ -1,0 +1,23 @@
+---
+title: All About Big O Notation & Algorithm Analysis
+description: Learn how to rank differing algorithms using big o notation - software development.
+# image: /someImage.jpg     # used for og:image meta
+---
+
+## What is Big O?
+
+_Big O_ Notation is a way for computer scientists and programmers to _rank_ differing
+algorithms based on how much time an algorithm will take to execute and how much space in memory it will take up.
+
+Except, since every machine has different processing speeds and connection strength, we can't simply put a time and space
+in common integers. Instead, Big O is a way to give the algorithm in question a position on the hierarchy when the inputs are increased to very large numbers.
+
+This approach takes the larger view and often the worst case because computers are very quick so there are only
+minute differenences between all algorithms with an input of 3 bits. But send in an array of ten-million strings and you are going to want an efficient way to perform your function.
+
+## The Basics
+
+There are 8 (primary) grades for an algorithm. We will go from the fastest to the absolute slowest. It should go without saying,
+but always aim to implement a more efficient solution when possible. The classifications are as follows:
+
+1. **O(1)** - _constant_:
