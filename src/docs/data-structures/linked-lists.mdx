@@ -32,7 +32,7 @@ create constant time stacks and queues.
 
 ---
 
-## Type 1 Implementation
+## Singly Linked List Implementation
 
 ```js title=scripts/singly-linked-list lineNumbers=true highlight={1,9,18}
 // Node Class Declaration
@@ -53,13 +53,18 @@ class SinglyLinkedList {
 }
 
 // Class Instantiation
+const mySLL = new SinglyLinkedList();
+
+mySLL.push("First");
+mySLL.push("Second");
+mySLL.push("Third");
 ```
 
 ---
 
-## Type 2 Implementation
+## Doubly Linked List Implementation
 
-```js title=scripts/type2 lineNumbers=true highlight={1,10}
+```js title=scripts/doubly-linked-list lineNumbers=true highlight={1,10}
 // Doubly Linked List Class Declaration
 class DoublyLinkedList {
   constructor() {
