@@ -34,7 +34,7 @@ create constant time stacks and queues.
 
 ## Singly Linked List Implementation
 
-```js title=scripts/singly-linked-list lineNumbers=true highlight={1,9,18}
+```js title=scripts/singly-linked-list lineNumbers=true highlight={1,9,17,33,54,67,83,96,102,119,133,149}
 // Node Class Declaration
 class Node {
   constructor(val) {
@@ -49,6 +49,137 @@ class SinglyLinkedList {
     this.head = null;
     this.tail = null;
     this.length = 0;
+  }
+
+  // ADD new node to end
+  push(val) {
+    const newNode = new Node(val);
+
+    if (this.length === 0) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
+
+    this.length++;
+    return this;
+  }
+
+  // REMOVE node at end
+  pop() {
+    if (this.length === 0) return null;
+
+    let curr = this.head;
+    let newTail;
+    while (curr.next) {
+      newTail = curr;
+      curr = curr.next;
+    }
+
+    this.tail = newTail;
+    this.tail.next = null;
+    this.length--;
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+    return curr;
+  }
+
+  // REMOVE node at beginning
+  shift() {
+    if (this.length === 0) return null;
+
+    let oldHead = this.head;
+    this.head = this.head.next;
+    oldHead.next = null;
+
+    if (this.length === 0) this.tail = null;
+
+    return oldHead;
+  }
+
+  // ADD node to beginning
+  unshift(val) {
+    const newNode = new Node(val);
+
+    if (this.length === 0) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+
+    this.length++;
+    return this;
+  }
+
+  // ACCESS a node at a given index
+  get(idx) {
+    if (idx < 0 || idx > this.length || this.length === 0) return null;
+
+    let count = 0;
+    let curr = this.head;
+    while (count !== idx) {
+      curr = curr.next;
+      count++;
+    }
+    return curr;
+  }
+
+  // UPDATE a node at a given index
+  set(idx, val) {
+    const nodeToSet = this.get(idx);
+    nodeToSet ? (!!nodeToSet.val = val) : false;
+  }
+
+  // ADD a node at a given index
+  insert(idx, val) {
+    if (idx < 0 || idx > this.length || this.length === 0) return null;
+    if (idx === 0) return this.unshift(val);
+    if (idx === this.length) return this.push(val);
+
+    const newNode = new Node(val);
+    const precedingNode = this.get(idx - 1);
+    const oldNode = precedingNode.next;
+
+    newNode.next = oldNode;
+    precedingNode.next = newNode;
+
+    this.length++;
+    return this;
+  }
+
+  // REMOVE a node at a given index
+  remove(idx) {
+    if (idx < 0 || idx > this.length || this.length === 0) return null;
+    if (idx === 0) return this.shift();
+    if (idx === this.length) return this.pop();
+
+    const precedingNode = this.get(idx - 1);
+    const oldNode = precedingNode.next;
+    precedingNode.next = precedingNode.next.next;
+
+    this.length--;
+    return oldNode.val;
+  }
+
+  // UPDATE the list to be in reverse
+  reverse() {
+    let curr = this.head;
+    let prev = null;
+
+    while (curr !== null) {
+      let next = curr.next;
+
+      curr.next = prev;
+      prev = curr;
+      curr = next;
+    }
+    return prev;
   }
 }
 
@@ -72,9 +203,32 @@ class DoublyLinkedList {
     this.tail = null;
     this.length = 0;
   }
+
+  push(val) {}
+
+  pop() {}
+
+  shift() {}
+
+  unshift(val) {}
+
+  get(idx) {}
+
+  set(idx, val) {}
+
+  insert(idx, val) {}
+
+  remove(idx) {}
+
+  reverse() {}
 }
 
 // Class Instantiation
+const myDLL = new SinglyLinkedList();
+
+myDLL.push("First");
+myDLL.push("Second");
+myDLL.push("Third");
 ```
 
 ---
