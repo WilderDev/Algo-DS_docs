@@ -6,7 +6,8 @@ description: Learn about the linked-list data structure - computer science.
 
 ## The Basics
 
-<!-- https://www.geeksforgeeks.org/data-structures/linked-list/ -->
+A Linked List is a linear data structure where each element, or node, has a pointer to another node.
+Elements in a linked list are not indexed because they are not stored in memory together.
 
 ---
 
@@ -16,12 +17,14 @@ description: Learn about the linked-list data structure - computer science.
 
 ## Types & Use Cases
 
-tsk
-tsk
+You will want to use a linked list for efficient insertion and deletion of a sequence. Linked lists are also used to
+create constant time stacks and queues.
 
-**Type 1**: tsk
+**Singly Linked List**: Each node has a pointer to the next. The last node points to null.
 
-**Type 2**: tsk
+**Doubly Linked List**: Each node has a next & prev pointer.
+
+**Circular Linked List**: Each node has a next node and the last node points back to the first/head.
 
 ---
 
@@ -75,13 +78,27 @@ class DoublyLinkedList {
 
 ## Big O Analysis
 
-**Access**: O()
+#### Singly Linked Lists
 
-**Insertion**: O()
+**Access**: O(n)
 
-**Deletion**: O()
+**Insertion**: O(1)
 
-**Searching**: O()
+**Deletion**: O(1) / O(n)
+
+**Searching**: O(n)
+
+---
+
+#### Doubly Linked Lists
+
+**Access**: O(n)
+
+**Insertion**: O(1)
+
+**Deletion**: O(1)
+
+**Searching**: O(n)
 
 ---
 
