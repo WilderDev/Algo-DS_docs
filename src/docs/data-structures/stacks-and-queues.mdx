@@ -6,8 +6,15 @@ description: Learn about the stack and queue data structures - computer science.
 
 ## The Basics
 
-<!-- https://www.geeksforgeeks.org/stack-data-structure/ -->
-<!-- https://www.geeksforgeeks.org/queue-data-structure/ -->
+Stacks and queues are two data structures that perform similar operations.
+
+The stack has two methods, `push` and `pop` to add/remove the most recent element from a collection respectively. It follows the **LIFO** Principal - The Last node to be added is the First node to be taken out.
+Real world example: _a stack of books/dishes._
+Computer world examples: _Javascript Call-Stack._
+
+The queue also has two methods `enqueue` and `dequeue`. These methods add/remove elemenets following the **FIFO** Princicpal - The First node added is the First one to be taken out.
+Real world example: _waiting in line._
+Computer world example: _CPU Scheduling_
 
 ---
 
@@ -20,10 +27,46 @@ description: Learn about the stack and queue data structures - computer science.
 ```js title=scripts/stack lineNumbers=true highlight={1,6}
 //  Stack Class Declaration
 class Stack {
-  constructor() {}
+  constructor() {
+    this.top = null;
+    this.bot = null;
+    this.size = 0;
+  }
+
+  push(val) {
+    const newNode = new Node(val);
+
+    if (this.size === 0) {
+      this.top = newNode;
+      this.bot = newNode;
+    } else {
+      const oldTop = this.top;
+      this.top = newNode;
+      newNode.next = oldTop;
+    }
+
+    this.size++;
+    return this;
+  }
+
+  pop() {
+    if (this.size === 0) return null;
+    if (this.top === this.bot) this.bot = null;
+
+    const oldTop = this.top;
+    this.top = this.top.next;
+
+    this.size--;
+    return oldTop.val;
+  }
 }
 
 // Class Instantiation
+const myStack = new Stack();
+
+myStack.push("First On The Stack");
+myStack.push("Second Push");
+myStack.push("Third On Stack For Tests");
 ```
 
 ---
@@ -33,10 +76,45 @@ class Stack {
 ```js title=scripts/queue lineNumbers=true highlight={1,6}
 // Queue Class Declaration
 class Queue {
-  constructor() {}
+  constructor() {
+    this.front = null;
+    this.back = null;
+    this.size = 0;
+  }
+
+  enqueue(val) {
+    const newNode = new Node(val);
+
+    if (this.size === 0) {
+      this.front = newNode;
+      this.back = newNode;
+    } else {
+      this.back.next = newNode;
+      this.back = newNode;
+    }
+
+    this.size++;
+    return this;
+  }
+
+  dequeue() {
+    if (this.size === 0) return null;
+    if (this.front === this.back) this.back = null;
+
+    const oldFront = this.front;
+    this.front = this.front.next;
+
+    this.size--;
+    return oldFront.val;
+  }
 }
 
 // Class Instantiation
+const myQueue = new Queue();
+
+myQueue.enqueue("First In Line");
+myQueue.enqueue("Second Enqueue");
+myQueue.enqueue("Third In Line. Got here late.");
 ```
 
 ---
@@ -47,25 +125,25 @@ class Queue {
 
 #### Stacks
 
-**Access**: O()
+**Access**: O(n)
 
-**Insertion**: O()
+**Insertion**: O(1)
 
-**Deletion**: O()
+**Deletion**: O(1)
 
-**Searching**: O()
+**Searching**: O(n)
 
 ---
 
 #### Queues
 
-**Access**: O()
+**Access**: O(n)
 
-**Insertion**: O()
+**Insertion**: O(1)
 
-**Deletion**: O()
+**Deletion**: O(1)
 
-**Searching**: O()
+**Searching**: O(n)
 
 ---
 
