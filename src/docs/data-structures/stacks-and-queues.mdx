@@ -8,12 +8,12 @@ description: Learn about the stack and queue data structures - computer science.
 
 Stacks and queues are two data structures that perform similar operations.
 
-The stack has two methods, `push` and `pop` to add/remove the most recent element from a collection respectively. It follows the **LIFO** Principal - The Last node to be added is the First node to be taken out.
-Real world example: _a stack of books/dishes._
+The **stack** has two methods, `push` and `pop` to add/remove the most recent element from a collection respectively. It follows the **LIFO** Principal - The Last node to be added is the First node to be taken out. <br />
+Real world example: _a stack of books/dishes._ <br />
 Computer world examples: _Javascript Call-Stack._
 
-The queue also has two methods `enqueue` and `dequeue`. These methods add/remove elemenets following the **FIFO** Princicpal - The First node added is the First one to be taken out.
-Real world example: _waiting in line._
+The **queue** also has two methods `enqueue` and `dequeue`. These methods add/remove elemenets following the **FIFO** Princicpal - The First node added is the First one to be taken out. <br />
+Real world example: _waiting in line._ <br />
 Computer world example: _CPU Scheduling_
 
 ---
@@ -24,7 +24,7 @@ Computer world example: _CPU Scheduling_
 
 ## Stack Implementation
 
-```js title=scripts/stack lineNumbers=true highlight={1,6}
+```js title=scripts/stack lineNumbers=true highlight={1,9,26,39}
 //  Stack Class Declaration
 class Stack {
   constructor() {
@@ -33,6 +33,7 @@ class Stack {
     this.size = 0;
   }
 
+  // Add a node to the top of the stack
   push(val) {
     const newNode = new Node(val);
 
@@ -49,6 +50,7 @@ class Stack {
     return this;
   }
 
+  // remove the node from the top of the stack
   pop() {
     if (this.size === 0) return null;
     if (this.top === this.bot) this.bot = null;
@@ -73,7 +75,7 @@ myStack.push("Third On Stack For Tests");
 
 ## Queue Implementation
 
-```js title=scripts/queue lineNumbers=true highlight={1,6}
+```js title=scripts/queue lineNumbers=true highlight={1,9,25,38}
 // Queue Class Declaration
 class Queue {
   constructor() {
@@ -82,6 +84,7 @@ class Queue {
     this.size = 0;
   }
 
+  // add a node to the back of the queue
   enqueue(val) {
     const newNode = new Node(val);
 
@@ -97,6 +100,7 @@ class Queue {
     return this;
   }
 
+  // remove the first node in the queue
   dequeue() {
     if (this.size === 0) return null;
     if (this.front === this.back) this.back = null;
