@@ -34,7 +34,7 @@ create constant time stacks and queues.
 
 ## Singly Linked List Implementation
 
-```js title=scripts/singly-linked-list lineNumbers=true highlight={1,9,17,33,54,67,83,96,102,119,133,149}
+```js title=scripts/singly-linked-list lineNumbers=true highlight={1,9,17,33,54,67,83,96,102,119,133,152}
 // Node Class Declaration
 class Node {
   constructor(val) {
@@ -169,6 +169,9 @@ class SinglyLinkedList {
 
   // UPDATE the list to be in reverse
   reverse() {
+    if (this.length === 0) return null;
+    if (this.length === 1) return this;
+
     let curr = this.head;
     let prev = null;
 
@@ -195,7 +198,7 @@ mySLL.push("Third");
 
 ## Doubly Linked List Implementation
 
-```js title=scripts/doubly-linked-list lineNumbers=true highlight={1,10}
+```js title=scripts/doubly-linked-list lineNumbers=true highlight={1,10,18,35,52,69,85,101,112,129,144}
 // Node Class Declaration
 class Node {
   constructor(val) {
@@ -281,19 +284,62 @@ class DoublyLinkedList {
   }
 
   // ACCESS a node at a given index
-  get(idx) {}
+  get(idx) {
+    if (idx < 0 || idx >= this.length || this.length === 0) return null;
+
+    const fromStart = idx <= this.length / 2;
+    let curr = fromStart ? this.head : this.tail;
+    let count = fromStart ? 0 : this.length - 1;
+
+    while (count !== idx) {
+      curr = fromStart ? curr.next : curr.prev;
+      fromStart ? count++ : count--;
+    }
+
+    return curr;
+  }
 
   // UPDATE a node at a given index
-  set(idx, val) {}
+  set(idx, val) {
+    const oldNode = this.get(idx);
+
+    if (oldNode !== null) {
+      oldNode.val = val;
+      return true;
+    }
+    return false;
+  }
 
   // ADD a node at a given index
-  insert(idx, val) {}
+  insert(idx, val) {
+    if (idx < 0 || idx > this.length || this.length === 0) return null;
+    if (idx === 0) return !!this.unshift(val);
+    if (idx === this.length) return !!this.push(val);
+
+    const newNode = new Node(val);
+    const priorNode = this.get(idx);
+    priorNode.prev.next = newNode;
+    newNode.prev = priorNode.prev;
+    priorNode.prev = newNode;
+    newNode.next = priorNode;
+
+    this.length++;
+    return this;
+  }
 
   // REMOVE a node at a given index
-  remove(idx) {}
+  remove(idx) {
+    if (idx < 0 || idx >= this.length || this.length === 0) return null;
+    if (idx === 0) return this.shift();
+    if (idx === this.length - 1) return this.pop();
 
-  // UPDATE the list to be in reverse
-  reverse() {}
+    const oldNode = this.get(idx);
+    oldNode.prev.next = oldNode.next;
+    oldNode.next.prev = oldNode.prev;
+
+    this.length--;
+    return oldNode.val;
+  }
 }
 
 // Class Instantiation
