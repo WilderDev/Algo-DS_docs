@@ -6,7 +6,44 @@ description: Learn basic and advanced sorting algorithms - software development.
 
 ## The Basics
 
+<!-- https://big-o.io/ -->
 <!-- https://www.geeksforgeeks.org/sorting-algorithms/ -->
+
+<!-- Bubble & Insertion sort are good only on:
+- Arrays that are almost sorted
+- Need low space complexity
+- Small datasets
+
+- (Insertion) for continually running data
+
+IF the array isn't sorted and you need to search for a given element... linear loop search works just fine!
+
+That is what *indexOf*, *find*, *findIndex*,  and *includes* are doing behind the scenes! -->
+<!-- IF your array is sorted, binary search > linear search. -->
+<!-- Insertion sort is super slow with random data... but it is the fastest when your data is nearly sorted. -->
+<!-- Insertion sort can be good for *online* algorithms in real time sorting numbers. -->
+
+---
+
+###
+
+---
+
+## Types & Use Cases
+
+There are many different ways to sort data in programming. Here are SOME of the most common & effective ways.
+
+**Bubble Sort**:
+
+**Selection Sort**:
+
+**Insertion Sort**:
+
+**Merge Sort**:
+
+**Quick Sort**:
+
+**Radix Sort**:
 
 ---
 
@@ -85,6 +122,84 @@ some code here
 ## Sandbox
 
 https://codesandbox.io/s/stoic-mayer-ft6w9?file=/src/index.js&view=split
+
+---
+
+###
+
+---
+
+## Big O Analysis
+
+#### Bubble Sort
+
+**Best**: O(n)
+
+**Avg**: O(n^2)
+
+**Worst**: O(n^2)
+
+**Space**: O(1)
+
+---
+
+#### Selection Sort
+
+**Best**: O(n^2)
+
+**Avg**: O(n^2)
+
+**Worst**: O(n^2)
+
+**Space**: O(1)
+
+---
+
+#### Insertion Sort
+
+**Best**: O(n)
+
+**Avg**: O(n^2)
+
+**Worst**: O(n^2)
+
+**Space**: O(1)
+
+---
+
+#### Merge Sort
+
+**Best**: O(n log n)
+
+**Avg**: O(n log n)
+
+**Worst**: O(n log n)
+
+**Space**: O(n)
+
+---
+
+#### Quick Sort
+
+**Best**: O(n log n)
+
+**Avg**: O(n log n)
+
+**Worst**: O(n^2)
+
+**Space**: O(log n)
+
+---
+
+#### Radix Sort
+
+**Best**: O(nk)
+
+**Avg**: O(nk)
+
+**Worst**: O(nk)
+
+**Space**: O(n + k)
 
 ---
 
