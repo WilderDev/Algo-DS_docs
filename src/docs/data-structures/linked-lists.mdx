@@ -196,6 +196,15 @@ mySLL.push("Third");
 ## Doubly Linked List Implementation
 
 ```js title=scripts/doubly-linked-list lineNumbers=true highlight={1,10}
+// Node Class Declaration
+class Node {
+  constructor(val) {
+    this.val = val;
+    this.next = null;
+    this.prev = null;
+  }
+}
+
 // Doubly Linked List Class Declaration
 class DoublyLinkedList {
   constructor() {
@@ -204,27 +213,91 @@ class DoublyLinkedList {
     this.length = 0;
   }
 
-  push(val) {}
+  // ADD new node to end
+  push(val) {
+    const newTail = new Node(val);
 
-  pop() {}
+    if (this.length === 0) {
+      this.head = newTail;
+      this.tail = newTail;
+    } else {
+      newTail.prev = this.tail;
+      this.tail.next = newTail;
+      this.tail = newTail;
+    }
 
-  shift() {}
+    this.length++;
+    return this;
+  }
 
-  unshift(val) {}
+  // REMOVE node at end
+  pop() {
+    if (this.length === 0) return null;
 
+    let oldTail = this.tail;
+    if (this.head === this.tail) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.tail = this.tail.prev;
+      this.tail.next = null;
+    }
+
+    this.length--;
+    return oldTail.val;
+  }
+
+  // REMOVE node at beginning
+  shift() {
+    if (this.length === 0) return null;
+
+    let oldHead = this.head;
+    if (this.head === this.tail) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.head = oldHead.next;
+      this.head.prev = null;
+    }
+
+    this.length--;
+    return oldHead.val;
+  }
+
+  // ADD node to beginning
+  unshift(val) {
+    const newHead = new Node(val);
+    if (this.length === 0) {
+      this.head = newHead;
+      this.tail = newHead;
+    } else {
+      oldHead.next = this.head;
+      this.head.prev = newHead;
+      this.head = oldHead;
+    }
+
+    this.length++;
+    return this;
+  }
+
+  // ACCESS a node at a given index
   get(idx) {}
 
+  // UPDATE a node at a given index
   set(idx, val) {}
 
+  // ADD a node at a given index
   insert(idx, val) {}
 
+  // REMOVE a node at a given index
   remove(idx) {}
 
+  // UPDATE the list to be in reverse
   reverse() {}
 }
 
 // Class Instantiation
-const myDLL = new SinglyLinkedList();
+const myDLL = new DoublyLinkedList();
 
 myDLL.push("First");
 myDLL.push("Second");
