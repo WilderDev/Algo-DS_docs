@@ -8,8 +8,8 @@ description: Learn basic and advanced sorting algorithms - software development.
 
 A sorting algorithm is a way to create an ordered array (usually) based on comparing the elements and rearranging their positions.
 
-For unsorted arrays, an iterative loop is usually the way to go. Javascript has a number of built in methods such as `indexOf()`, `find()`, `findIndex`, and `includes`...
-but for sorted arrays, there are a plethora of options, each with their specific use cases/advantages.
+Javascript has a number of built in methods such as `indexOf()`, `find()`, `findIndex()`, and `includes()` to iteratively loop over an array...
+but for more complex arrays, there are a plethora of options, each with their specific use cases/advantages.
 
 ---
 
@@ -25,11 +25,11 @@ There are many different ways to sort data in programming. Here are SOME of the 
 
 **Selection Sort**: use rarely on small datasets when you need low space complexity
 
-**Insertion Sort**: works with low dataset almost sorted arrays with continually running (online) data.
+**Insertion Sort**: works with low dataset of almost sorted arrays with continually running (online) data.
 
-**Merge Sort**: divide and conquer algorithm
+**Merge Sort**: divide and conquer algorithm used with linked lists or when the data structure doesn't allow random access.
 
-**Quick Sort**: divide and conquer algorithm
+**Quick Sort**: divide and conquer algorithm used in most situations.
 
 **Radix Sort**: Non-comparison sort used for arrays of integers (and binary). Extremely efficient in certain use cases.
 
@@ -45,7 +45,7 @@ There are many different ways to sort data in programming. Here are SOME of the 
 
 Loops over array and swaps adjacent elements if they are in the wrong order.
 
-```js
+```js title=scripts/bubble-sort lineNumbers=true highlight={1}
 
 ```
 
@@ -57,48 +57,78 @@ Loops over array and swaps adjacent elements if they are in the wrong order.
 
 ### Selection Sort
 
-tsk tsk tsk explanation
+Loops to find the minimum element and moves it to start of the array.
 
-```js
+```js title=scripts/selection-sort lineNumbers=true highlight={1}
 some code here
 
 ```
 
-##### Time Complexity: O()
+##### Time Complexity: O(n^2)
 
-##### Space Complexity: O()
+##### Space Complexity: O(1)
+
+---
+
+### Insertion Sort
+
+Loops an array and picks an element from the unsorted section and places it in the (virtual) sorted array.
+
+```js title=scripts/insertion-sort lineNumbers=true highlight={1}
+some code here
+
+```
+
+##### Time Complexity: O(n^2)
+
+##### Space Complexity: O(1)
 
 ---
 
 ## Advanced Sorts
 
-### Q3:
+### Merge Sort
 
-tsk tsk tsk explanation
+Divides the array into halves, calls itelf on each half respectively using a base case, and finally, merges the results.
 
-```js
+```js title=scripts/merge-sort lineNumbers=true highlight={1}
 some code here
 
 ```
 
-##### Time Complexity: O()
+##### Time Complexity: O(n log n)
 
-##### Space Complexity: O()
+##### Space Complexity: O(n)
 
 ---
 
-### Q4:
+### Quick Sort
 
-tsk tsk tsk explanation
+Picks a "pivot" element to divide the array into smaller parts to be placed back into a sorted array.
 
-```js
+```js title=scripts/quick-sort lineNumbers=true highlight={1}
 some code here
 
 ```
 
-##### Time Complexity: O()
+##### Time Complexity: O(n log n / n^2)
 
-##### Space Complexity: O()
+##### Space Complexity: O(log n)
+
+---
+
+### Radix Sort
+
+Places elements into buckets depending on the digit value at a certain decimal place.
+
+```js title=scripts/radix-sort lineNumbers=true highlight={1}
+some code here
+
+```
+
+##### Time Complexity: O(nk)
+
+##### Space Complexity: O(n + k)
 
 ---
 
