@@ -4,14 +4,14 @@
   link: "/"
 - label: Algorithms
   items:
-    - label: "Arrays"
-      link: "/algorithms/arrays"
-    - label: "Strings"
-      link: "/algorithms/strings"
     - label: "Sorts"
       link: "/algorithms/sorts"
     - label: "Searches"
       link: "/algorithms/searches"
+    - label: "Arrays"
+      link: "/algorithms/arrays"
+    - label: "Strings"
+      link: "/algorithms/strings"
     - label: "Math"
       link: "/algorithms/math"
 - label: Data Structures

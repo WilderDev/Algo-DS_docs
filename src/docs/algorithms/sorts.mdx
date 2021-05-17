@@ -46,7 +46,31 @@ There are many different ways to sort data in programming. Here are SOME of the 
 Loops over array and swaps adjacent elements if they are in the wrong order.
 
 ```js title=scripts/bubble-sort lineNumbers=true highlight={1}
+function bubbleSort(arr) {
+  // Helper function to swap two elements by index
+  const swap = (arr, idx1, idx2) => {
+    [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
+  };
 
+  let shouldNotSwap;
+
+  // For every iteration reset shouldNotSwap to be false;
+  for (let i = arr.length; i > 0; i--) {
+    let shouldNotSwap = true;
+
+    // loop through and check if the curr idx is greater than next idx
+    for (let j = 0; j < i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        swap(arr, j, j + 1);
+        shouldNotSwap = false;
+      }
+    }
+    // If we didn't swap, go to the the next iteration of "i"
+    if (shouldNotSwap) break;
+  }
+
+  return arr;
+}
 ```
 
 ##### Time Complexity: O(n^2)
@@ -60,8 +84,27 @@ Loops over array and swaps adjacent elements if they are in the wrong order.
 Loops to find the minimum element and moves it to start of the array.
 
 ```js title=scripts/selection-sort lineNumbers=true highlight={1}
-some code here
+function selectionSort(arr) {
+  // Helper function to swap two elements by index
+  const swap = (arr, idx1, idx2) => {
+    [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
+  };
 
+  // Loop through the array setting the minimum to be the array at the current idx every cycle
+  for (let i = 0; i < arr.length; i++) {
+    let min = i;
+
+    // Loop through and check if the next idx is lower than min (curr idx) and swaps if it is
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[min]) {
+        min = j;
+      }
+    }
+    if (i !== min) swap(arr, i, min);
+  }
+
+  return arr;
+}
 ```
 
 ##### Time Complexity: O(n^2)
