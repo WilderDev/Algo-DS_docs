@@ -6,22 +6,10 @@ description: Learn basic and advanced sorting algorithms - software development.
 
 ## The Basics
 
-<!-- https://big-o.io/ -->
-<!-- https://www.geeksforgeeks.org/sorting-algorithms/ -->
+A sorting algorithm is a way to create an ordered array (usually) based on comparing the elements and rearranging their positions.
 
-<!-- Bubble & Insertion sort are good only on:
-- Arrays that are almost sorted
-- Need low space complexity
-- Small datasets
-
-- (Insertion) for continually running data
-
-IF the array isn't sorted and you need to search for a given element... linear loop search works just fine!
-
-That is what *indexOf*, *find*, *findIndex*,  and *includes* are doing behind the scenes! -->
-<!-- IF your array is sorted, binary search > linear search. -->
-<!-- Insertion sort is super slow with random data... but it is the fastest when your data is nearly sorted. -->
-<!-- Insertion sort can be good for *online* algorithms in real time sorting numbers. -->
+For unsorted arrays, an iterative loop is usually the way to go. Javascript has a number of built in methods such as `indexOf()`, `find()`, `findIndex`, and `includes`...
+but for sorted arrays, there are a plethora of options, each with their specific use cases/advantages.
 
 ---
 
@@ -33,17 +21,17 @@ That is what *indexOf*, *find*, *findIndex*,  and *includes* are doing behind th
 
 There are many different ways to sort data in programming. Here are SOME of the most common & effective ways.
 
-**Bubble Sort**:
+**Bubble Sort**: good for low dataset arrays that are almost already sorted.
 
-**Selection Sort**:
+**Selection Sort**: use rarely on small datasets when you need low space complexity
 
-**Insertion Sort**:
+**Insertion Sort**: works with low dataset almost sorted arrays with continually running (online) data.
 
-**Merge Sort**:
+**Merge Sort**: divide and conquer algorithm
 
-**Quick Sort**:
+**Quick Sort**: divide and conquer algorithm
 
-**Radix Sort**:
+**Radix Sort**: Non-comparison sort used for arrays of integers (and binary). Extremely efficient in certain use cases.
 
 ---
 
@@ -51,9 +39,23 @@ There are many different ways to sort data in programming. Here are SOME of the 
 
 ---
 
-## Easy Problems
+## Common Sorts
 
-### Q1:
+### Bubble Sort
+
+Loops over array and swaps adjacent elements if they are in the wrong order.
+
+```js
+
+```
+
+##### Time Complexity: O(n^2)
+
+##### Space Complexity: O(1)
+
+---
+
+### Selection Sort
 
 tsk tsk tsk explanation
 
@@ -68,22 +70,7 @@ some code here
 
 ---
 
-### Q2:
-
-tsk tsk tsk explanation
-
-```js
-some code here
-
-```
-
-##### Time Complexity: O()
-
-##### Space Complexity: O()
-
----
-
-## Intermediate Problems
+## Advanced Sorts
 
 ### Q3:
 
