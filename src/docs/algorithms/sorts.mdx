@@ -151,7 +151,7 @@ function insertionSort(arr) {
 Divides the array into halves, calls itelf on each half respectively using a base case, and finally, merges the results.
 
 ```js title=scripts/merge-sort lineNumbers=true
-// Implementation of recrusive mergeSort
+// Implementation of recrusive Merge Sort
 function mergeSort(arr) {
   if (arr.length <= 1) return arr;
 
@@ -168,6 +168,7 @@ function merge(arr1, arr2) {
   let i = 0;
   let j = 0;
 
+  // While we can still iterate over an array, push the lower value to a new array
   while (i < arr1.length && j < arr2.length) {
     if (arr1[i] < arr2[j]) {
       sortedArr.push(arr1[i]);
@@ -182,6 +183,7 @@ function merge(arr1, arr2) {
     }
   }
 
+  // If arr1 still has elements, loop over and add them to the sorted arr; Same for arr2
   while (i < arr1.length) {
     sortedArr.push(arr1[i]);
     i++;
@@ -206,8 +208,38 @@ function merge(arr1, arr2) {
 Picks a "pivot" element to divide the array into smaller parts to be placed back into a sorted array.
 
 ```js title=scripts/quick-sort lineNumbers=true
-some code here
+// Implementation of recursive Quick Sort
+function quickSort(arr, left = 0, right = arr.length - 1) {
+  if (left < right) {
+    let pivotIdx = pivot(arr, left);
 
+    quickSort(arr, left, pivotIdx - 1);
+    quickSort(arr, pivotIdx + 1, right);
+  }
+  return arr;
+}
+
+// Helper Function for getting the index of the pivot element
+const pivot = (arr, start = 0) => {
+  const piv = arr[start]; // This can be anywhere... pro's & con's to having it at the start
+  let swapIdx = start;
+
+  // Loop over the array and if the starting element is greater than the curr element -> swap those elements
+  for (let i = start + 1; i < arr.length; i++) {
+    if (piv > arr[i]) {
+      swapIdx++;
+      swap(arr, swapIdx, i);
+    }
+  }
+
+  // Put the swap index at the start and return
+  swap(arr, start, swapIdx);
+  return swapIdx;
+};
+
+// Helper Function to Swap two elements given indexes
+const swap = (arr, idx1, idx2) =>
+  ([arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]]);
 ```
 
 ##### Time Complexity: O(n log n / n^2)
