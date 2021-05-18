@@ -45,7 +45,7 @@ There are many different ways to sort data in programming. Here are SOME of the 
 
 Loops over array and swaps adjacent elements if they are in the wrong order.
 
-```js title=scripts/bubble-sort lineNumbers=true highlight={1}
+```js title=scripts/bubble-sort lineNumbers=true
 function bubbleSort(arr) {
   // Helper function to swap two elements by index
   const swap = (arr, idx1, idx2) => {
@@ -83,7 +83,7 @@ function bubbleSort(arr) {
 
 Loops to find the minimum element and moves it to start of the array.
 
-```js title=scripts/selection-sort lineNumbers=true highlight={1}
+```js title=scripts/selection-sort lineNumbers=true
 function selectionSort(arr) {
   // Helper function to swap two elements by index
   const swap = (arr, idx1, idx2) => {
@@ -117,8 +117,25 @@ function selectionSort(arr) {
 
 Loops an array and picks an element from the unsorted section and places it in the (virtual) sorted array.
 
-```js title=scripts/insertion-sort lineNumbers=true highlight={1}
+```js title=scripts/insertion-sort lineNumbers=true
+function insertionSort(arr) {
+  // Loop over the whole array
+  for (let i = 1; i < arr.length; i++) {
+    let curr = arr[i];
+    let sorter = i - 1;
 
+    // Check if the array @ curr idx is less than the array at the prev idx
+    while (sorter >= 0 && curr < arr[sorter]) {
+      // Swap the next element after the current sorter position with the current sorter position
+      arr[sorter + 1] = arr[sorter];
+      sorter--;
+    }
+    // Update the current element to be the array at the next unsorted index
+    arr[sorter + 1] = curr;
+  }
+
+  return arr;
+}
 ```
 
 ##### Time Complexity: O(n^2)
@@ -133,9 +150,24 @@ Loops an array and picks an element from the unsorted section and places it in t
 
 Divides the array into halves, calls itelf on each half respectively using a base case, and finally, merges the results.
 
-```js title=scripts/merge-sort lineNumbers=true highlight={1}
-some code here
+```js title=scripts/merge-sort lineNumbers=true
+// Implementation of recrusive mergeSort
+function mergeSort(arr) {
+  if (arr.length <= 1) return arr;
 
+  let half = Math.floor(arr.length / 2);
+  let left = mergeSort(arr.slice(0, half));
+  let right = mergeSort(arr.slice(half));
+
+  return merge(left, right);
+}
+
+// Helper function to merge two arrays
+function merge(arr1, arr2) {
+  const sortedArr = [];
+  let i = 0;
+  let j = 0;
+}
 ```
 
 ##### Time Complexity: O(n log n)
@@ -148,7 +180,7 @@ some code here
 
 Picks a "pivot" element to divide the array into smaller parts to be placed back into a sorted array.
 
-```js title=scripts/quick-sort lineNumbers=true highlight={1}
+```js title=scripts/quick-sort lineNumbers=true
 some code here
 
 ```
@@ -163,7 +195,7 @@ some code here
 
 Places elements into buckets depending on the digit value at a certain decimal place.
 
-```js title=scripts/radix-sort lineNumbers=true highlight={1}
+```js title=scripts/radix-sort lineNumbers=true
 some code here
 
 ```
