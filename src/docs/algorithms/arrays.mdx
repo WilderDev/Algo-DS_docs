@@ -23,63 +23,75 @@ The benefits of arrays comes from the fact that each piece is indexed and easily
 
 ### Q1: Count Unique Elements
 
-tsk tsk tsk explanation
+Given a sorted array, return the number of unique integers from an input array consisting of integers greater than 0 and less than infinity.
 
 ```js
-some code here
+function uniqueValCalc(arr) {
+  if (arr.length === 0) return 0;
+  let prev;
+  let count = 0;
 
+  arr.forEach((val) => {
+    if (val !== prev) count++;
+    prev = val;
+  });
+
+  return count;
+}
 ```
 
-##### Time Complexity: O()
+##### Time Complexity: O(n)
 
-##### Space Complexity: O()
+##### Space Complexity: O(1)
 
----
+<!-- ---
 
 ### Q2:
 
 tsk tsk tsk explanation
 
 ```js
-some code here
 
 ```
 
 ##### Time Complexity: O()
 
-##### Space Complexity: O()
+##### Space Complexity: O() -->
 
 ---
 
 ## Intermediate Problems
 
-### Q3:
+### Q3: Array Rotation
 
-tsk tsk tsk explanation
+Given an array, rotate the array to the right by k steps, where k is non-negative.
 
 ```js
-some code here
+const rotate = (nums, k) => {
+  const s = k % nums.length;
+  const rest = nums.splice(nums.length - s, s);
 
+  nums.splice(0, 0, ...rest);
+};
 ```
 
-##### Time Complexity: O()
+##### Time Complexity: O(n)
 
-##### Space Complexity: O()
+##### Space Complexity: O(1)
 
----
+<!-- ---
 
 ### Q4:
 
 tsk tsk tsk explanation
 
 ```js
-some code here
 
 ```
 
 ##### Time Complexity: O()
 
-##### Space Complexity: O()
+##### Space Complexity: O() -->
 
 ---
 
