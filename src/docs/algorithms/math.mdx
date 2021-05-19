@@ -96,33 +96,60 @@ const factorial = (num) => {
 
 ## Intermediate Problems
 
-### Q3:
+### Q3: Sudoku
 
-tsk tsk tsk explanation
+Given a Sudoku board partially filled out, return true if that board is valid. You do not need to check if the game is solvable! Check if what is currently on the board is indeed valid!
 
-```js
-some code here
-
-```
-
-##### Time Complexity: O()
-
-##### Space Complexity: O()
-
----
-
-### Q4:
-
-tsk tsk tsk explanation
-
-```js
-some code here
+Your input will look like:
 
 ```
+isValidSudoku([
+ ["5","3",".",".","7",".",".",".","."]
+,["6",".",".","1","9","5",".",".","."]
+,[".","9","8",".",".",".",".","6","."]
+,["8",".",".",".","6",".",".",".","3"]
+,["4",".",".","8",".","3",".",".","1"]
+,["7",".",".",".","2",".",".",".","6"]
+,[".","6",".",".",".",".","2","8","."]
+,[".",".",".","4","1","9",".",".","5"]
+,[".",".",".",".","8",".",".","7","9"]])
+```
 
-##### Time Complexity: O()
+and this board should return `true`
 
-##### Space Complexity: O()
+```js
+function isValidSudoku(board) {
+  let r = new Array(9);
+  let c = new Array(9);
+  let b = new Array(9);
+
+  for (let i = 0; i < r.length; i++) {
+    r[i] = {};
+    c[i] = {};
+    b[i] = {};
+  }
+
+  for (let i = 0; i < 9; i++) {
+    for (let j = 0; j < 9; j++) {
+      if (board[i][j] == ".") continue;
+
+      let boxIndex = Math.floor(i / 3) * 3 + Math.floor(j / 3);
+
+      let v = board[i][j];
+      if (r[i][v]) return false;
+      r[i][v] = true;
+
+      if (c[j][v]) return false;
+      c[j][v] = true;
+
+      if (b[boxIndex][v]) return false;
+      b[boxIndex][v] = true;
+    }
+  }
+
+  return true;
+}
+```
 
 ---
 
