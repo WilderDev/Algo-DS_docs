@@ -6,8 +6,6 @@ description: Learn basic and advanced search algorithms - software development.
 
 ## The Basics
 
-<!-- https://www.geeksforgeeks.org/searching-algorithms/ -->
-
 Searching Algorithms are designed to get a specific target element from a data structure.
 
 As programmers, we use these to retrieve results from a database,
@@ -39,12 +37,18 @@ There are also Hash, Jump, Interpolation, Exponential, and a few more searches d
 
 ### Linear Search
 
-Description
+Write a function that takes in an array and a target num. Return the index in the given array where the target number is located (else -1).
 
-```js title=scripts/some-search lineNumbers=true highlight={1}
-some code here
-
+```js title=scripts/some-search lineNumbers=true
+function linearSearch(arr, num) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === num) return i;
+  }
+  return -1;
+}
 ```
+
+##### Time Complexity: O(n)
 
 ---
 
@@ -54,7 +58,7 @@ some code here
 
 Write a function that takes in an array and a target num. Return the index in the given array where the target number is located (else -1).
 
-```js title=scripts/some-search lineNumbers=true highlight={1}
+```js title=scripts/some-search lineNumbers=true
 function binarySearch(arr, num) {
   let left = 0;
   let right = arr.length - 1;
@@ -75,35 +79,7 @@ function binarySearch(arr, num) {
 }
 ```
 
----
-
-###
-
----
-
-## Big O Analysis
-
-#### Linear Search
-
-**Best**: O()
-
-**Avg**: O()
-
-**Worst**: O()
-
-**Space**: O()
-
----
-
-#### Binary Search
-
-**Best**: O()
-
-**Avg**: O()
-
-**Worst**: O()
-
-**Space**: O()
+##### Time Complexity: O(log n)
 
 ---
 
