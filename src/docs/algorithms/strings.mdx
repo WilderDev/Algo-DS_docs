@@ -54,12 +54,21 @@ some code here
 
 ## Intermediate Problems
 
-### Q3:
+### Q1: First Unique Character
 
-tsk tsk tsk explanation
+Write a function that takes in a string and outputs the index of the first unique character in that string.
 
 ```js
-some code here
+const findFirstUniqueChar = str => {
+  const uniqueChars = {};
+
+  for (let char of str) {
+    unique[char] = unique[char] + 1 : 1
+  };
+
+  const firstNonR = Object.keys(unique).find(key => unique[key] === 1);
+  return firstNonR ? str.indexOf(firstNonR) : -1
+}
 
 ```
 
