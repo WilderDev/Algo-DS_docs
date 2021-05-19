@@ -20,39 +20,7 @@ require manipulatating strings further, and that is what we will be exploring he
 
 ---
 
-## Easy Problems
-
-### Q1:
-
-tsk tsk tsk explanation
-
-```js
-some code here
-
-```
-
-##### Time Complexity: O()
-
-##### Space Complexity: O()
-
----
-
-### Q2:
-
-tsk tsk tsk explanation
-
-```js
-some code here
-
-```
-
-##### Time Complexity: O()
-
-##### Space Complexity: O()
-
----
-
-## Intermediate Problems
+## Practice Problems
 
 ### Q1: First Unique Character
 
@@ -72,24 +40,30 @@ const findFirstUniqueChar = str => {
 
 ```
 
-##### Time Complexity: O()
-
-##### Space Complexity: O()
-
 ---
 
-### Q4:
+### Q2: Anagram Checker
 
-tsk tsk tsk explanation
+Given two strings, return true if those strings are anagrams of eachother.
 
 ```js
-some code here
+const isValidAnagram = (str1, str2) => {
+  if (str1.length !== str2.length) return false;
 
+  const charLookup = {};
+
+  for (let char of str1) {
+    charLookup[char] = charLookup[char] + 1 || 1;
+  }
+
+  for (let char of str2) {
+    if (!charLookup[char]) return false;
+    charLookup[char] -= 1;
+  }
+
+  return true;
+};
 ```
-
-##### Time Complexity: O()
-
-##### Space Complexity: O()
 
 ---
 
