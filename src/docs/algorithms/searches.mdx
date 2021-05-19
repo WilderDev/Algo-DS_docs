@@ -4,6 +4,9 @@ description: Learn basic and advanced search algorithms - software development.
 # image: /someImage.jpg     # used for og:image meta
 ---
 
+> This is an overview of common searches.
+> All specific implementation will be in their repsective file. eg: BFS/DFS are on the Tree & Graph Page.
+
 ## The Basics
 
 Searching Algorithms are designed to get a specific target element from a data structure.
@@ -39,7 +42,7 @@ There are also Hash, Jump, Interpolation, Exponential, and a few more searches d
 
 Write a function that takes in an array and a target num. Return the index in the given array where the target number is located (else -1).
 
-```js title=scripts/some-search lineNumbers=true
+```js title=scripts/linear-search lineNumbers=true
 function linearSearch(arr, num) {
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] === num) return i;
@@ -58,7 +61,7 @@ function linearSearch(arr, num) {
 
 Write a function that takes in an array and a target num. Return the index in the given array where the target number is located (else -1).
 
-```js title=scripts/some-search lineNumbers=true
+```js title=scripts/binary-search lineNumbers=true
 function binarySearch(arr, num) {
   let left = 0;
   let right = arr.length - 1;

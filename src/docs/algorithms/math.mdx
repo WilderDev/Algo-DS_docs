@@ -26,7 +26,7 @@ relating to math that we will explore here!
 
 Output the total sum of all the numbers in an array. 1 <= n >= 2^30
 
-```js
+```js title=scripts/get-sum lineNumbers=true highlight={10}
 // !!! READABLE SOLUTION !!!
 function addUpTo(maxNum) {
   let total = 0;
@@ -51,7 +51,7 @@ const addConseq = (n) => (n * (n + 1)) / 2;
 Output numbers as strings from 1 to x. If the number is divisible by 3, replace it with “Fizz”.
 If it is divisible by 5, replace it with “Buzz”. If it is divisible by 3 and 5 replace it with “FizzBuzz”.
 
-```js
+```js title=scripts/fizz-buzz lineNumbers=true
 const fizzBuzz = (n) => {
   const answer = [];
 
@@ -81,7 +81,7 @@ const fizzBuzz = (n) => {
 
 Using recursion, write a function that takes in a num and returns that `num!` (num factorial).
 
-```js
+```js title=scripts/factorial lineNumbers=true
 const factorial = (num) => {
   if (num === 1) return 1;
   return (num = num * factorial(num - 1));
@@ -117,7 +117,7 @@ isValidSudoku([
 
 and this board should return `true`
 
-```js
+```js title=scripts/valid-sudoku lineNumbers=true
 function isValidSudoku(board) {
   let r = new Array(9);
   let c = new Array(9);
@@ -150,16 +150,6 @@ function isValidSudoku(board) {
   return true;
 }
 ```
-
----
-
-###
-
----
-
-## Sandbox
-
-https://codesandbox.io/s/stoic-mayer-ft6w9?file=/src/index.js&view=split
 
 ---
 

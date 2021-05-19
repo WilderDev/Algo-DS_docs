@@ -26,7 +26,7 @@ require manipulatating strings further, and that is what we will be exploring he
 
 Write a function that takes in a string and outputs the index of the first unique character in that string.
 
-```js
+```js title=scripts/first-unique-char lineNumbers=true
 const findFirstUniqueChar = str => {
   const uniqueChars = {};
 
@@ -46,7 +46,7 @@ const findFirstUniqueChar = str => {
 
 Given two strings, return true if those strings are anagrams of eachother.
 
-```js
+```js title=scripts/anagram-checker lineNumbers=true
 const isValidAnagram = (str1, str2) => {
   if (str1.length !== str2.length) return false;
 
