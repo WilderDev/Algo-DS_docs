@@ -16,6 +16,8 @@ The **queue** also has two methods `enqueue` and `dequeue`. These methods add/re
 Real world example: _waiting in line._ <br />
 Computer world example: _CPU Scheduling_
 
+We will also be diving into creating a Priority Queue using a [max heap](/data-structures/trees#termonology).
+
 ---
 
 ###
@@ -73,6 +75,10 @@ myStack.push("Third On Stack For Tests");
 
 ---
 
+###
+
+---
+
 ## Queue Implementation
 
 ```js title=scripts/queue lineNumbers=true highlight={1,9,25,38}
@@ -122,6 +128,109 @@ myQueue.enqueue("Third In Line. Got here late.");
 ```
 
 ---
+
+###
+
+---
+
+## Priority Queue Implementation
+
+A priority queue is a type of queue where each node has a priority level. The array automatically arranged the next in line to be the node with the highest priority (lowest number).
+
+Priority 1 > Priority 2 > ... 3
+
+```js title=scripts/priority-queue lineNumbers=true
+// Priority Node Class Declaration
+class Node {
+  constructor(val, priority) {
+    this.val = val;
+    this.priority = priority;
+  }
+}
+
+//  Priority Queue Class Declaration
+class PriorityQueue {
+  constructor() {
+    this.values = [];
+  }
+
+  static bubbleUp(values) {
+    let idx = values.length - 1;
+    const el = values[idx];
+
+    while (idx > 0) {
+      let parentIdx = Math.floor((idx - 1) / 2);
+      let parent = values[parentIdx];
+
+      if (el.priority >= parent.priority) break;
+
+      values[parentIdx] = el;
+      values[idx] = parent;
+      idx = parentIdx;
+    }
+  }
+
+  static bubbleDown(values) {
+    const len = values.length;
+    const el = values[0];
+    let idx = 0;
+
+    while (true) {
+      let leftChild, rightChild;
+      let leftChildIdx = 2 * idx + 1;
+      let rightChildIdx = 2 * idx + 2;
+      let swap = null;
+
+      if (leftChildIdx < len) {
+        leftChild = values[leftChildIdx];
+        if (leftChild.priority < el.priority) swap = leftChildIdx;
+      }
+
+      if (rightChildIdx < len) {
+        rightChild = values[rightChildIdx];
+        if (
+          (swap === null && rightChild.priority < el.priority) ||
+          (swap !== null && rightChild.priority < leftChild.priority)
+        ) {
+          swap = rightChildIdx;
+        }
+      }
+
+      if (swap === null) break;
+      values[idx] = values[swap];
+      values[swap] = el;
+      idx = swap;
+    }
+  }
+
+  enqueue(val, priority) {
+    const newNode = new Node(val, priority);
+    this.values.push(newNode);
+    this.constructor.bubbleUp(this.values);
+  }
+
+  dequeue() {
+    const min = this.values[0];
+    const end = this.values.pop();
+
+    if (this.values.length > 0) {
+      this.values[0] = end;
+      this.constructor.bubbleDown(this.values);
+    }
+
+    return min;
+  }
+}
+
+// Class Instantiation
+const priQueue = new PriorityQueue();
+```
+
+##### Time Complexity (Insertion & Deletion): O(log n)
+
+---
+
+###
 
 ---
 
