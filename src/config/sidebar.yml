@@ -24,8 +24,6 @@
       link: "/data-structures/graphs"
     - label: "Hash Tables"
       link: "/data-structures/hash-tables"
-    - label: "Heaps"
-      link: "/data-structures/heaps"
     - label: "Trees"
       link: "/data-structures/trees"
 - label: More

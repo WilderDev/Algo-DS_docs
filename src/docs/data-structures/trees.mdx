@@ -75,11 +75,83 @@ class TSK {
 
 ```js title=scripts/max-heap lineNumbers=true
 // Max Heap Class Declaration
-class TSK {
-  constructor() {}
+class MaxBinaryHeap {
+  constructor() {
+    this.values = [];
+  }
+
+  // Larger values rise to be greater than parents if needed
+  static bubbleUp(values) {
+    let idx = values.length - 1;
+    const el = values[idx];
+
+    while (idx > 0) {
+      let parentIdx = Math.floor((idx - 1) / 2);
+      let parent = values[parentIdx];
+
+      if (parent >= el) break;
+
+      values[parentIdx] = el;
+      values[idx] = parent;
+      idx = parentIdx;
+    }
+  }
+
+  static bubbleDown(values) {
+    const len = values.length;
+    const el = values[0];
+    let idx = 0;
+
+    while (true) {
+      let leftChildIdx = 2 * idx + 1;
+      let rightChildIdx = 2 * idx + 2;
+      let leftChild, rightChild;
+      let swap = null;
+
+      // If left is valid index
+      if (leftChildIdx < len) {
+        leftChild = values[leftChildIdx];
+        if (leftChild > el) swap = leftChildIdx;
+      }
+
+      if (rightChildIdx < len) {
+        rightChild = values[rightChildIdx];
+        if (
+          (swap === null && rightChild > el) ||
+          (swap !== null && rightChild > leftChild)
+        ) {
+          swap = rightChildIdx;
+        }
+      }
+
+      if (swap === null) break;
+      values[idx] = values[swap];
+      values[swap] = el;
+      idx = swap;
+    }
+  }
+
+  insert(el) {
+    this.values.push(el);
+    this.constructor.bubbleUp(this.values);
+  }
+
+  // Get the root node and replace it
+  extractMax() {
+    const max = this.values[0];
+    const end = this.values.pop();
+
+    if (this.values.length > 0) {
+      this.values[0] = end;
+      this.constructor.bubbleDown(this.values);
+    }
+
+    return max;
+  }
 }
 
 // Max Heap Class Instantiation
+const maxHeap = new MaxBinaryHeap();
 ```
 
 ---
