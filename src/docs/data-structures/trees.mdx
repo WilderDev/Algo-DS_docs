@@ -8,6 +8,8 @@ description: Learn about the tree data structure - computer science.
 
 A tree, in computer science, is a data structure that consists of nodes in a parent/child relationship with one root node and no edges between siblings.
 
+![Instructive Diagram of a Tree in computer science with labels and names](/tree.jpg)
+
 ---
 
 ###
@@ -16,17 +18,17 @@ A tree, in computer science, is a data structure that consists of nodes in a par
 
 ## Termonology
 
-**Root**:
+**Root**: The starting node in the tree with no parent elements nor siblings.
 
-**Child**:
+**Child**: A node that has a parent that points to it on a level lower in the tree.
 
-**Parent**:
+**Parent**: a node that has child nodes it points to on a higher level.
 
-**Sibling**:
+**Sibling**: Nodes on the same level of a tree.
 
-**Edge**:
+**Edge**: Nodes that are connected by a pointer.
 
-**Leaf**:
+**Leaf**: Nodes with no children at the highest level of the tree.
 
 **Heap**: The two most common heaps are the min heap & the max heap. The max heap has the highest value at the root and every parent must be larger than it's children. The min has the smallest at the root and every parent must be smaller than it's children.
 
@@ -42,9 +44,11 @@ A tree, in computer science, is a data structure that consists of nodes in a par
 
 There are a lot of trees in computer science! We are focusing on a very select few that come up often.
 
-**Binary Search Tree**:
+**Binary Search Tree**: A tree structure where the left subtree of all nodes is less than it and all children on the right subtree are greater than that node.
 
-**Min/Max Heap**: tsk
+We will create methods for breadth-first-search and 3 versions of depth-first-search using our binary tree!
+
+**Min/Max Heap**: Binary Heaps such as Min Heap & Max Heap are useful in themselves but are mainly used to implement [Priority Queues](/data-structures/stacks-and-queues#priority-queue-implementation)
 
 ---
 
@@ -54,28 +58,28 @@ There are a lot of trees in computer science! We are focusing on a very select f
 
 ## Binary Search Tree Implementation
 
-<!-- Directed vs Undirected -->
-
-```js title=scripts/type1 lineNumbers=true highlight={1,6}
-//  TSK Class Declaration
+```js title=scripts/binary-search-tree lineNumbers=true
+//  Binary Search Tree Class Declaration
 class TSK {
   constructor() {}
 }
 
-// Class Instantiation
+// BST Class Instantiation
 ```
 
 ---
 
-## Type 2 Implementation
+## Max Heap Implementation
 
-```js title=scripts/type2 lineNumbers=true highlight={1,6}
-// TSK Class Declaration
+> Min Heap is the same logic but change a few greater than `>` to less than symbols `<`
+
+```js title=scripts/max-heap lineNumbers=true
+// Max Heap Class Declaration
 class TSK {
   constructor() {}
 }
 
-// Class Instantiation
+// Max Heap Class Instantiation
 ```
 
 ---
