@@ -8,7 +8,7 @@ module.exports = {
     siteAuthor: `William Wilder`,
     siteImage: `/banner.jpg`,
     siteLanguage: `en`,
-    // themeColor: `#8257E6`, // TODO
+    themeColor: `#8257E6`,
     basePath: `/`,
   },
   flags: { PRESERVE_WEBPACK_CACHE: true },
@@ -27,6 +27,7 @@ module.exports = {
         name: `Algo-DS Documentation`,
         short_name: `AlgoDS`,
         start_url: `/`,
+        theme_color: `#8257e6`,
         background_color: `#f8fafb`,
         display: `standalone`,
         icon: `static/favicon.png`,

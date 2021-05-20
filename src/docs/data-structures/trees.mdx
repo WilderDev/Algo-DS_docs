@@ -59,12 +59,76 @@ We will create methods for breadth-first-search and 3 versions of depth-first-se
 ## Binary Search Tree Implementation
 
 ```js title=scripts/binary-search-tree lineNumbers=true
+// Node Class Declaration
+class Node {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+}
+
 //  Binary Search Tree Class Declaration
-class TSK {
-  constructor() {}
+class BinarySearchTree {
+  constructor() {
+    this.root = null;
+  }
+
+  // Method for inserting new nodes
+  insert(val) {
+    const newNode = new Node(val);
+
+    if (!this.root) {
+      this.root = newNode;
+      return this;
+    } else {
+      let curr = this.root;
+
+      while (true) {
+        // If you want to count duplicates, add a freq counter for each num...
+        // Here we will ignore duplicates
+        if (val === curr.val) return null;
+
+        if (val < curr.val) {
+          if (curr.left === null) {
+            curr.left = newNode;
+            return this;
+          } else curr = curr.left;
+        } else if (val > curr.val) {
+          if (curr.right === null) {
+            curr.right = newNode;
+            return this;
+          } else curr = curr.right;
+        }
+      }
+    }
+  }
+
+  // Method for finding a specific node
+  find(val) {
+    if (!this.root) return null;
+
+    let curr = this.root;
+    let found = false;
+
+    // While there is something we can loop over & we haven't found it.
+    while (curr && !found) {
+      if (val < curr.val) {
+        curr = curr.left;
+      } else if (val > curr.val) {
+        curr = curr.right;
+      } else {
+        found = true;
+      }
+    }
+
+    if (!found) return null;
+    return curr;
+  }
 }
 
 // BST Class Instantiation
+const myBST = new BinarySearchTree();
 ```
 
 ---
@@ -162,31 +226,27 @@ const maxHeap = new MaxBinaryHeap();
 
 #### Binary Search Tree
 
-<!-- **Best**: O(n^2)
+**Insertion**: O(n) / O(log n)
 
-**Avg**: O(n^2)
+**Deletion**: O(n) / O(log n)
 
-**Worst**: O(n^2)
-
-**Space**: O(1) -->
+**Search**: O(n) / O(log n)
 
 ---
 
-#### tsk
+#### Max/Min Heap
 
-<!-- **Best**: O(n)
+**Insertion**: O(log n)
 
-**Avg**: O(n^2)
+**Deletion**: O(log n)
 
-**Worst**: O(n^2)
+**Search**: O(n)
 
-**Space**: O(1) -->
-
----
+<!-- ---
 
 #### tsk
 
-<!-- **Best**: O(n log n)
+**Best**: O(n log n)
 
 **Avg**: O(n log n)
 
