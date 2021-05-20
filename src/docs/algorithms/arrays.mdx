@@ -44,19 +44,35 @@ function uniqueValCalc(arr) {
 
 ##### Space Complexity: O(1)
 
-<!-- ---
+---
 
-### Q2:
+### Q2: Max Sub Array
 
-tsk tsk tsk explanation
+Given an array of integers and a range as an integer n, find the subarray of length n with the greatest sum and return the sum.
 
-```js title=scripts/merge-sort lineNumbers=true
+```js title=scripts/max-sub-array lineNumbers=true
+const maxSubArr = (arr, num) => {
+  if (arr.length < num) return null;
 
+  let maxSum = 0;
+  let tempSum = 0;
+
+  for (let i = 0; i < num; i++) {
+    maxSum += arr[i];
+  }
+
+  tempSum = maxSum;
+
+  for (let i = num; i < arr.length; i++) {
+    tempSum = tempSum - arr[i - num] + arr[i];
+    maxSum = Math.max(maxSum, tempSum);
+  }
+
+  return maxSum;
+};
 ```
 
-##### Time Complexity: O()
-
-##### Space Complexity: O() -->
+We solved this problem using the **Sliding Window** method.
 
 ---
 

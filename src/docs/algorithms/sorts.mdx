@@ -253,8 +253,39 @@ const swap = (arr, idx1, idx2) =>
 Places elements into buckets depending on the digit value at a certain decimal place.
 
 ```js title=scripts/radix-sort lineNumbers=true
-some code here
+// Radix Sort Declaration
+const radixSort = (nums) => {
+  let loops = getMaxDigCount(nums);
 
+  for (let k = 0; k < loops; k++) {
+    let buckets = Array.from({ length: 10 }, () => []);
+
+    for (let i = 0; i < nums.length; i++) {
+      // put the num in the bucket slot according to what dig we are on (k)
+      let digit = getDigPos(nums[i], k);
+      buckets[digit].push(nums[i]);
+    }
+    nums = [].concat(...buckets);
+  }
+  return nums;
+};
+
+// ~~ HELPERS ~~ \\
+// base 10 only... you can introduce a new input variable to change that if you want
+let getDigPos = (num, pos) =>
+  Math.floor(Math.abs(num) / Math.pow(10, pos)) % 10;
+
+let getDigCount = (num) =>
+  num === 0 ? 1 : Math.floor(Math.log10(Math.abs(num))) + 1;
+
+let getMaxDigCount = (nums) => {
+  let maxNum = 0;
+
+  for (let i = 0; i < nums.length; i++) {
+    maxNum = Math.max(maxNum, getDigCount(nums[i]));
+  }
+  return maxNum;
+};
 ```
 
 ##### Time Complexity: O(nk)
