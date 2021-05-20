@@ -58,7 +58,7 @@ We will create methods for breadth-first-search and 3 versions of depth-first-se
 
 ## Binary Search Tree Implementation
 
-```js title=scripts/binary-search-tree lineNumbers=true
+```js title=scripts/binary-search-tree lineNumbers=true highlight={1,10,16,46,68,86,101,114,128}
 // Node Class Declaration
 class Node {
   constructor(val) {
@@ -124,6 +124,65 @@ class BinarySearchTree {
 
     if (!found) return null;
     return curr;
+  }
+
+  // Binary Tree Breadth-First-Search Method
+  BFS() {
+    if (this.length === 0) return null;
+
+    const queue = [this.root];
+    const data = [];
+    let curr = null;
+
+    while (queue.length) {
+      curr = queue.shift();
+      data.push(curr.val);
+
+      if (curr.left) queue.push(curr.left);
+      if (curr.right) queue.push(curr.right);
+    }
+    return data;
+  }
+
+  // Binary Tree Depth-First-Search Method - PreOrder
+  DFSPreOrder() {
+    const data = [];
+
+    // Helper Func Recursion
+    const traverse = (node) => {
+      data.push(node.val);
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+    };
+    traverse(this.root);
+
+    return data;
+  }
+
+  // Binary Tree Depth-First-Search Method - PostOrder
+  DFSPostOrder() {
+    const data = [];
+
+    const traverse = (node) => {
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+      data.push(node.val);
+    };
+    traverse(this.root);
+    return data;
+  }
+
+  // Binary Tree Depth-First-Search Method - InOrder
+  DFSInOrder() {
+    const data = [];
+
+    const traverse = (node) => {
+      if (node.left) traverse(node.left);
+      data.push(node.val);
+      if (node.right) traverse(node.right);
+    };
+    traverse(this.root);
+    return data;
   }
 }
 
