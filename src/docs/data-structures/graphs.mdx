@@ -52,10 +52,44 @@ Graphs are used all over the place in computer programming and beyond! Some typi
 
 <!-- Directed vs Undirected -->
 
-```js title=scripts/type1 lineNumbers=true highlight={1,6}
-//  TSKGraph Class Declaration
-class TSKGraph {
-  constructor() {}
+```js title=scripts/undirected-adjacency-list-graph lineNumbers=true
+//  Undirected Class Declaration
+class UndirectedGraph {
+  constructor() {
+    this.adjList = {};
+  }
+
+  // METHOD to add a vertex
+  addVertex(vtx) {
+    if (!this.adjList[vtx]) this.adjList[vtx] = [];
+  }
+
+  // METHOD to add an edge
+  addEdge(v1, v2) {
+    if (this.adjList[v1] && this.adjList[v2]) {
+      this.adjList[v1].push(v2);
+      this.adjList[v2].push(v1);
+    }
+  }
+
+  // METHOD to remove an edge
+  removeEdge(v1, v2) {
+    if (this.adjList[v1] && this.adjList[v2]) {
+      this.adjList[v1] = this.adjList[v1].filter((v) => v !== v2);
+      this.adjList[v2] = this.adjList[v2].filter((v) => v !== v1);
+    }
+  }
+
+  // METHOD to remove a vertex
+  removeVertex(vtx) {
+    if (!this.adjList[vtx]) return null;
+
+    for (let adj of this.adjList[vtx]) {
+      removeEdge(vtx, adj);
+    }
+
+    delete this.adjList[vtx];
+  }
 }
 
 // Class Instantiation
