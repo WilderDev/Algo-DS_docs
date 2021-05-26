@@ -23,7 +23,7 @@ There is no specific pattern between nodes that is required because graphs are n
 
 **Height**: The number of edges or jumps from the starting node to another node.
 
-**Dijkstra's Algorithm**: An algorithm that finds the shortest path between nodes in a graph.
+**Dijkstra's Algorithm**: An algorithm that finds the shortest path between vertices in a graph.
 
 ---
 
@@ -54,7 +54,7 @@ Graphs are used all over the place in computer programming and beyond! Some typi
 
 ## Undirected Graph Implementation
 
-```js title=scripts/undirected-adjacency-list-graph lineNumbers=true
+```js title=scripts/undirected-adjacency-list-graph lineNumbers=true highlight={1,7,12,20,28,39,63,86,109}
 //  Undirected Graph Class Declaration
 class UndirectedGraph {
   constructor() {
@@ -171,13 +171,189 @@ const g = new UndirectedGraph();
 
 ## Dijkstra's Algorithm Implementation
 
-```js title=scripts/dijkstra's-algorithm lineNumbers=true highlight={1,6}
-// Dijkstra's Algo Class Declaration
-class DijkstraAlgo {
-  constructor() {}
+```js title=scripts/dijkstra's-algorithm lineNumbers=true highlight={1,12,20,80,88,162,181}
+// Weighted Graph Class Declaration
+class WeightedGraph {
+  constructor() {
+    this.adjList = {};
+  }
+
+  // METHOD to add a vertex to the graph
+  addVertex(vtx) {
+    if (!this.adjList[vtx]) this.adjList[vtx] = [];
+  }
+
+  // METHOD to an edge between vertices in the graph using weight
+  addEdge(v1, v2, weight) {
+    if (this.adjList[v1] && this.adjList[v2]) {
+      this.adjList[v1].push({ vertex: v2, weight });
+      this.adjList[v2].push({ vertex: v1, weight });
+    }
+  }
+
+  // Dijkstra's Algorithm
+  findShortestPath(start, end) {
+    const nodes = new PriorityQueue();
+    const distances = {};
+    const prev = {};
+    let finalPath = [];
+    let shortest;
+
+    // Build initial state
+    for (let vtx in this.adjList) {
+      if (vtx === start) {
+        distances[vtx] = 0;
+        nodes.enqueue(vtx, 0);
+      } else {
+        distances[vtx] = Infinity;
+        nodes.enqueue(vtx, Infinity);
+      }
+      prev[vtx] = null;
+    }
+
+    // Keep going while there are vertices to visit
+    while (nodes.values.length) {
+      // Pick the node with the smallest known distance first
+      shortest = nodes.dequeue().val;
+
+      // This runs when we are done
+      if (shortest === end) {
+        // Build path to return
+        while (prev[shortest]) {
+          finalPath.push(shortest);
+          shortest = prev[shortest];
+        }
+        break;
+      }
+
+      if (shortest || distances[shortest] !== Infinity) {
+        // Look at every neighbor and find distances between
+        for (let neighbor in this.adjList[shortest]) {
+          // Find neighbor
+          let next = this.adjList[shortest][neighbor];
+
+          // Calculate distance to the new neighbor
+          let prospect = distances[shortest] + next.weight;
+          // Check if this distance is shorter
+          // than what is currently stored
+          if (prospect < distances[next.vertex]) {
+            // Update the distance & path to neighbor
+            distances[next.vertex] = prospect;
+            prev[next.vertex] = shortest;
+            // Add the neighbor with the new priority
+            nodes.enqueue(next.vertex, prospect);
+          }
+        }
+      }
+    }
+
+    return finalPath.concat(shortest).reverse();
+  }
+}
+
+// Priority Node Class Declaration
+class Node {
+  constructor(val, priority) {
+    this.val = val;
+    this.priority = priority;
+  }
+}
+
+//  Priority Queue Class Declaration
+class PriorityQueue {
+  constructor() {
+    this.values = [];
+  }
+
+  static bubbleUp(values) {
+    let idx = values.length - 1;
+    const el = values[idx];
+
+    while (idx > 0) {
+      let parentIdx = Math.floor((idx - 1) / 2);
+      let parent = values[parentIdx];
+
+      if (el.priority >= parent.priority) break;
+
+      values[parentIdx] = el;
+      values[idx] = parent;
+      idx = parentIdx;
+    }
+  }
+
+  static bubbleDown(values) {
+    const len = values.length;
+    const el = values[0];
+    let idx = 0;
+
+    while (true) {
+      let leftChild, rightChild;
+      let leftChildIdx = 2 * idx + 1;
+      let rightChildIdx = 2 * idx + 2;
+      let swap = null;
+
+      if (leftChildIdx < len) {
+        leftChild = values[leftChildIdx];
+        if (leftChild.priority < el.priority) swap = leftChildIdx;
+      }
+
+      if (rightChildIdx < len) {
+        rightChild = values[rightChildIdx];
+        if (
+          (swap === null && rightChild.priority < el.priority) ||
+          (swap !== null && rightChild.priority < leftChild.priority)
+        ) {
+          swap = rightChildIdx;
+        }
+      }
+
+      if (swap === null) break;
+      values[idx] = values[swap];
+      values[swap] = el;
+      idx = swap;
+    }
+  }
+
+  enqueue(val, priority) {
+    const newNode = new Node(val, priority);
+    this.values.push(newNode);
+    this.constructor.bubbleUp(this.values);
+  }
+
+  dequeue() {
+    const min = this.values[0];
+    const end = this.values.pop();
+
+    if (this.values.length > 0) {
+      this.values[0] = end;
+      this.constructor.bubbleDown(this.values);
+    }
+
+    return min;
+  }
 }
 
 // Class Instantiation
+let g = new WeightedGraph();
+
+// Graph Population
+g.addVertex("A");
+g.addVertex("B");
+g.addVertex("C");
+g.addVertex("D");
+g.addVertex("E");
+g.addVertex("F");
+g.addEdge("A", "B", 4);
+g.addEdge("A", "C", 2);
+g.addEdge("B", "E", 3);
+g.addEdge("C", "D", 2);
+g.addEdge("C", "F", 4);
+g.addEdge("D", "E", 3);
+g.addEdge("D", "F", 1);
+g.addEdge("E", "F", 1);
+
+// Print Final Path
+console.log(g.findShortestPath("A", "E"));
 ```
 
 ---
@@ -200,8 +376,7 @@ Good for:
 **Adjacency List**
 Good for:
 
--Adding an Edge
-
+- Adding an Edge
 - Adding a Vertex
 - Removing a Vertex
 - Storage
@@ -212,6 +387,6 @@ Good for:
 
 ###
 
---- -->
+---
 
 <!-- ## Advanced Graph Questions -->
