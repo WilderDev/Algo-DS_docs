@@ -21,7 +21,9 @@ There is no specific pattern between nodes that is required because graphs are n
 
 **Edge**: The connection between two nodes in a graph.
 
-**D Algorithm**:
+**Height**: The number of edges or jumps from the starting node to another node.
+
+**Dijkstra's Algorithm**: An algorithm that finds the shortest path between nodes in a graph.
 
 ---
 
@@ -53,7 +55,7 @@ Graphs are used all over the place in computer programming and beyond! Some typi
 ## Undirected Graph Implementation
 
 ```js title=scripts/undirected-adjacency-list-graph lineNumbers=true
-//  Undirected Class Declaration
+//  Undirected Graph Class Declaration
 class UndirectedGraph {
   constructor() {
     this.adjList = {};
@@ -138,11 +140,27 @@ class UndirectedGraph {
     return result;
   }
 
-  // METHOD to breadth-first-search the graph recursively
-  BFSRecursive(start) {}
-
   // METHOD to breadth-first-search the graph iteratively
-  BFSIterative(start) {}
+  BFSIterative(start) {
+    const queue = [start];
+    const result = [];
+    const visited = {};
+    visited[start] = true;
+
+    let curr;
+    while (queue.length) {
+      curr = queue.shift();
+      result.push(curr);
+
+      this.adjList[curr].forEach((neighbor) => {
+        if (!visited[neighbor]) {
+          visited[neighbor] = true;
+          queue.push(neighbor);
+        }
+      });
+    }
+    return result;
+  }
 }
 
 // Class Instantiation
@@ -151,11 +169,11 @@ const g = new UndirectedGraph();
 
 ---
 
-## D Algo Implementation
+## Dijkstra's Algorithm Implementation
 
-```js title=scripts/type2 lineNumbers=true highlight={1,6}
-// TSKGraph Class Declaration
-class TSKGraph {
+```js title=scripts/dijkstra's-algorithm lineNumbers=true highlight={1,6}
+// Dijkstra's Algo Class Declaration
+class DijkstraAlgo {
   constructor() {}
 }
 
@@ -166,29 +184,29 @@ class TSKGraph {
 
 ---
 
-## Big O Analysis
+## Advantages & Drawbacks
 
-**Access**: O()
+There are two ways to store a graph in code:
 
-**Insertion**: O()
+**Adjacency Matrix**
+Good for:
 
-**Deletion**: O()
+- Adding an Edge
+- Removing an Edge
+- Query a Graph
+- If you don't have a lot of vertices
+- Faster for specific lookup
 
-**Searching**: O()
+**Adjacency List**
+Good for:
 
----
+-Adding an Edge
 
-###
-
----
-
-<!-- #### Advantages
-
-- 
-
-#### Drawbacks
-
-- 
+- Adding a Vertex
+- Removing a Vertex
+- Storage
+- Easy to loop over edges
+- Most real world data has sparse edges and larger graphs
 
 ---
 

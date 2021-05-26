@@ -6,7 +6,8 @@ description: Learn about the hash-table data structure - computer science.
 
 ## The Basics
 
-<!-- https://www.geeksforgeeks.org/hashing-data-structure/ -->
+A hash table is built in to almost every programming language.
+Hashing is a process of pairing together keys and values for more efficient access, insertion & deletion.
 
 ---
 
@@ -16,12 +17,11 @@ description: Learn about the hash-table data structure - computer science.
 
 ## Types & Use Cases
 
-tsk
-tsk
+When dealing with collisions in a hash table, there are two methods or solutions.
 
-**Type 1**: tsk
+**Seperate Chaining**: have a nested structure at that index.
 
-**Type 2**: tsk
+**Linear Probing**: find the next cell that is open and store it there.
 
 ---
 
@@ -29,30 +29,104 @@ tsk
 
 ---
 
-## Type 1 Implementation
+## Hash Table Implementation
 
-<!-- Directed vs Undirected -->
+```js title=scripts/hash-table lineNumbers=true highlight={1,8,27,39,55,76,94}
+//  Hash Table Class Declaration
+class HashTable {
+  // Default value should be a prime number
+  constructor(size = 53) {
+    this.keyMap = new Array(size);
+  }
 
-```js title=scripts/type1 lineNumbers=true highlight={1,6}
-//  TSK Class Declaration
-class TSK {
-  constructor() {}
+  // METHOD: Hash the key value in our Hash Table
+  _hash(key) {
+    let total = 0;
+    // Prime Nums Drastically reduce collisions
+    let PRIME = 31;
+
+    // Loop through length of the hash with a max of 100 iterations
+    for (let i = 0; i < Math.min(key.length, 100); i++) {
+      let char = key[i];
+      // Gives us "a" === 1, "b" === 2, ...
+      let value = char.charCodeAt(0) - 96;
+
+      // We can't have total be > our array length so we use %
+      total = Math.abs((total * PRIME + value) % this.keyMap.length);
+    }
+
+    return total;
+  }
+
+  // METHOD: Set a specific key to be a specified value
+  set(key, value) {
+    let idx = this._hash(key);
+
+    // Check if our hash table at that idx is empty
+    if (!this.keyMap[idx]) {
+      this.keyMap[idx] = [];
+    }
+
+    this.keyMap[idx].push([key, value]);
+  }
+
+  // METHOD: Get a specific value from a key
+  get(key) {
+    let idx = this._hash(key);
+
+    if (this.keyMap[idx]) {
+      // Loop incase there are multiple items at that idx
+      for (let i = 0; i < this.keyMap[idx].length; i++) {
+        if (this.keyMap[idx][i][0] === key) {
+          return this.keyMap[idx][i][1];
+        }
+      }
+    }
+
+    return null;
+  }
+
+  // METHOD: Collects & returns all keys
+  keys() {
+    const allKeys = [];
+
+    // Go over full length to see if something is there
+    for (let i = 0; i < this.keyMap.length; i++) {
+      if (this.keyMap[i]) {
+        // For the nested Indexes
+        for (let j = 0; j < this.keyMap[i].length; j++) {
+          // Remove duplicate data
+          if (!allKeys.includes(this.keyMap[i][j][0])) {
+            // Add value to the return array
+            allKeys.push(this.keyMap[i][j][0]);
+          }
+        }
+      }
+    }
+
+    return allKeys;
+  }
+
+  // METHOD: Collects & returns all values
+  values() {
+    const allValues = [];
+
+    for (let i = 0; i < this.keyMap.length; i++) {
+      if (this.keyMap[i]) {
+        for (let j = 0; j < this.keyMap[i].length; j++) {
+          if (!allValues.includes(this.keyMap[i][j][1])) {
+            allValues.push(this.keyMap[i][j][1]);
+          }
+        }
+      }
+    }
+
+    return allValues;
+  }
 }
 
 // Class Instantiation
-```
-
----
-
-## Type 2 Implementation
-
-```js title=scripts/type2 lineNumbers=true highlight={1,6}
-// TSK Class Declaration
-class TSK {
-  constructor() {}
-}
-
-// Class Instantiation
+const myHT = new HashTable();
 ```
 
 ---
@@ -61,32 +135,32 @@ class TSK {
 
 ## Big O Analysis
 
-**Access**: O()
+**Access**: O(1)
 
-**Insertion**: O()
+**Insertion**: O(1)
 
-**Deletion**: O()
+**Deletion**: O(1)
 
-**Searching**: O()
+**Searching**: O(n)
+
+---
+
+###
+
+---
+
+#### Advantages
+
+Hash tables are extremely efficient for:
+
+- Finding values
+- Adding new values
+- Removing values
 
 ---
 
 ###
 
 ---
-
-<!-- #### Advantages
-
-- 
-
-#### Drawbacks
-
-- 
-
----
-
-###
-
---- -->
 
 <!-- ## Advanced Hash Table Questions -->
