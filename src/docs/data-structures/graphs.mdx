@@ -21,6 +21,8 @@ There is no specific pattern between nodes that is required because graphs are n
 
 **Edge**: The connection between two nodes in a graph.
 
+**D Algorithm**:
+
 ---
 
 ###
@@ -48,9 +50,7 @@ Graphs are used all over the place in computer programming and beyond! Some typi
 
 ---
 
-## Type 1 Implementation
-
-<!-- Directed vs Undirected -->
+## Undirected Graph Implementation
 
 ```js title=scripts/undirected-adjacency-list-graph lineNumbers=true
 //  Undirected Class Declaration
@@ -90,14 +90,68 @@ class UndirectedGraph {
 
     delete this.adjList[vtx];
   }
+
+  // METHOD to depth-first-search the graph recursively
+  DFSRecursive(start) {
+    const result = [];
+    const visited = {};
+    const adjList = this.adjList;
+
+    // HELPER func to call recursively using outside vars
+    (function dfs(vtx) {
+      if (!vtx) return null;
+
+      visited[vtx] = true;
+      result.push(vtx);
+
+      // Check if we have already been to neighbor and continue
+      adjList[vtx].forEach((neighbor) => {
+        if (!visited[neighbor]) {
+          return dfs(neighbor);
+        }
+      });
+    })(start);
+
+    return result;
+  }
+
+  // METHOD to depth-first-search the graph iteratively
+  DFSIterative(start) {
+    const stack = [start];
+    const result = [];
+    const visited = {};
+    visited[start] = true;
+
+    // Keep checking if visited while the stack has nodes
+    let curr;
+    while (stack.length) {
+      curr = stack.pop();
+      result.push(curr);
+
+      this.adjList[curr].forEach((neighbor) => {
+        if (!visited[neighbor]) {
+          visited[neighbor] = true;
+          stack.push(neighbor);
+        }
+      });
+    }
+    return result;
+  }
+
+  // METHOD to breadth-first-search the graph recursively
+  BFSRecursive(start) {}
+
+  // METHOD to breadth-first-search the graph iteratively
+  BFSIterative(start) {}
 }
 
 // Class Instantiation
+const g = new UndirectedGraph();
 ```
 
 ---
 
-## Type 2 Implementation
+## D Algo Implementation
 
 ```js title=scripts/type2 lineNumbers=true highlight={1,6}
 // TSKGraph Class Declaration
